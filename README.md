@@ -1,2 +1,4 @@
 # DailyLeetCode
-LeetCode刷题笔记
+704 Binary Search
+35 Search Insert Position
+34
