@@ -110,3 +110,33 @@ public:
 };
 ```
 
+### [852 Peak Index in a Mountain Array](https://leetcode.cn/problems/peak-index-in-a-mountain-array/)
+
+```c++
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        // Binary Search
+        int left = 0;
+        int right = arr.size() - 1;
+        int mountainTop = 0;
+        
+        while (left <= right)
+        {
+            int middle = left + ((right - left) / 2);
+
+            if (arr[middle] > arr[middle + 1]){
+                mountainTop = middle;
+                right = middle - 1;
+            }
+            else
+            {
+                left = middle + 1;
+            }
+        }
+
+    return mountainTop;
+    }
+};
+```
+
