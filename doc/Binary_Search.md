@@ -140,3 +140,33 @@ public:
 };
 ```
 
+### [367 Valid Perfect Square](https://leetcode.cn/problems/valid-perfect-square/)
+
+```c++
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        int left = 1;
+        int right = num;
+        while (left <= right)
+        {
+            int middle = left + ((right - left) / 2);
+            long square = (long) middle * middle;
+            if (square < num)
+            {
+                left = middle + 1;
+            } 
+            else if (square > num)
+            {
+                right = middle - 1;
+            } 
+            else
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+};
+```
+
