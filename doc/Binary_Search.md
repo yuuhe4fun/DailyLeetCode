@@ -240,3 +240,4 @@ public:
 };
 ```
 
+### [69 Sqrt(x)](https://leetcode.cn/problems/sqrtx/)
