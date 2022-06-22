@@ -170,3 +170,73 @@ public:
 };
 ```
 
+### [1385 Find the Distance Value Between Two Arrays](https://leetcode.cn/problems/find-the-distance-value-between-two-arrays/)
+
+```c++
+class Solution {
+public:
+    int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
+        int out = 0;
+        for (int i = 0; i < arr1.size(); ++i)
+        {
+            bool flag = true;
+            for (int j = 0; j < arr2.size(); ++j)
+            {
+                int distance = abs(arr1[i] - arr2[j]);
+                if (distance <= d)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag)
+            {
+                out ++;
+            }
+        }
+
+        return out;
+    }
+};
+```
+
+```c++
+class Solution {
+public:
+    int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
+        int cnt = 0;
+        for (auto &x: arr1) {
+            bool ok = true;
+            for (auto &y: arr2) {
+                ok &= (abs(x - y) > d);  // ok = ok & (abs(x - y) > d);
+            }
+            cnt += ok;
+        }
+        return cnt;
+    }
+};
+```
+
+```c++
+class Solution {
+public:
+    int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
+        sort(arr2.begin(), arr2.end());
+        int cnt = 0;
+        for (auto &x: arr1) {
+            unsigned p = lower_bound(arr2.begin(), arr2.end(), x) - arr2.begin();
+            bool ok = true;
+            if (p < arr2.size()) {
+                ok &= (arr2[p] - x > d);
+            }
+            if (p - 1 >= 0 && p - 1 <= arr2.size()) {
+                ok &= (x - arr2[p - 1] > d);
+            }
+            cnt += ok;
+        }
+        return cnt;
+    }
+};
+```
+
