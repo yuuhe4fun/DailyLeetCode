@@ -241,3 +241,89 @@ public:
 ```
 
 ### [69 Sqrt(x)](https://leetcode.cn/problems/sqrtx/)
+
+```c++
+class Solution {
+public:
+    int mySqrt(int x) {
+        int left = 0;
+        int right = x;
+        int squareRoot = 0;
+        while (left <= right)
+        {
+            int middle = left + (right - left)/2;
+            if ((long long)middle * middle > x)
+            // if (x/middle < middle) 可以避免溢出
+            {
+                right = middle - 1;
+            }
+            else
+            {
+                squareRoot = middle;
+                left = middle + 1;
+            }
+        }
+
+        return squareRoot;
+    }
+};
+```
+
+### [744 Find Smallest Letter Greater Than Target](https://leetcode.cn/problems/find-smallest-letter-greater-than-target/)
+
+```c++
+class Solution {
+public:
+    char nextGreatestLetter(vector<char>& letters, char target) {
+        int left = 0;
+        int right = letters.size() - 1;
+        int sLetter = 0;
+        while (left <= right)
+        {
+            int middle = (left + right) >> 1;
+            if (letters[middle] <= target)
+            {
+                left = middle + 1;
+            }
+            else
+            {
+                sLetter = middle;
+                right = middle - 1;
+            }
+        }
+        return (right == letters.size() - 1) ? letters[0] : letters[sLetter];
+    }
+};
+```
+
+### [278 First Bad Version](https://leetcode.cn/problems/first-bad-version/)
+
+```c++
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        int left = 1;
+        int right = n;
+        int minBadVersion = 0;
+        while (left <= right)
+        {
+            int middle = left + (right - left)/2;
+            if (isBadVersion(middle))
+            {
+                minBadVersion = middle;
+                right = middle - 1;
+            }
+            else
+            {
+                left = middle + 1;
+            }
+        }
+
+        return minBadVersion;
+    }
+};
+```
+
