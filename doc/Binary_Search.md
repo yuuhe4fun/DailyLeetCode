@@ -327,3 +327,58 @@ public:
 };
 ```
 
+### [34 Find First and Last Position of Element in Sorted Array](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/)
+
+```c++
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        // Binary Search for the starting position
+        int left = 0;
+        int right = nums.size() - 1;
+        int startingPosition = -1;
+        while (left <= right)
+        {
+            int middle = (left + right + 1) >> 1;
+            if (nums[middle] == target)
+            {
+                startingPosition = middle;
+                right = middle - 1;
+            }
+            else if (nums[middle] > target)
+            {
+                right = middle - 1;
+            }
+            else
+            {
+                left = middle + 1;
+            }
+        }
+
+        // Binary Search for the ending position
+        left = 0;
+        right = nums.size() - 1;
+        int endingPosition = -1;
+        while (left <= right)
+        {
+            int middle = (left + right) >> 1;
+            if (nums[middle] == target)
+            {
+                endingPosition = middle;
+                left = middle + 1;
+            }
+            else if (nums[middle] > target)
+            {
+                right = middle - 1;
+            }
+            else
+            {
+                left = middle + 1;
+            }
+        }
+
+        return {startingPosition, endingPosition};
+    }
+};
+```
+
