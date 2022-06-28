@@ -382,3 +382,34 @@ public:
 };
 ```
 
+### [441 Arranging Coins](https://leetcode.cn/problems/arranging-coins/)
+
+```c++
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        if (n == 1) return 1;
+        int left = 1;
+        int right = n;
+        while (left < right)
+        {
+            int middle = left + (right - left >> 1);
+            long kSum = (long) middle * (middle + 1) / 2;
+            if (kSum < n)
+            {
+                left = middle + 1;
+            }
+            else if (kSum == n)
+            {
+                return middle;
+            }
+            else
+            {
+                right = middle;
+            }
+        }
+
+        return left - 1;
+    }
+};
+```
