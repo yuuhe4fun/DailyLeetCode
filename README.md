@@ -7,7 +7,7 @@
 | 27    |       |        |      |            |
 | 34 |		|		 |		|			 |
 | 35 |       |        |      |            |
-| 704   | Binary Search |        |      |            |
+| 704   | [Binary Search](https://leetcode.cn/problems/binary-search/) | [20221011](./Python/704.py) |      |            |
 |       |       |        |      |            |
 |       |       |        |      |            |
 |       |       |        |      |            |
